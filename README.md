@@ -17,3 +17,5 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
   - git commit -m "mensaje claro de que va el cambio".
   - git push origin <nombre_rama>
 - Hacer un Pull request de sus respositorios (hechos mediante el fork) a la rama `main` del repositorio de la clase.
+
+Pablo Agustin Agis @agusagis
