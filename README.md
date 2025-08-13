@@ -21,4 +21,8 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 # Listado de participantes:
 
 - Daniel Guzman, dguzman-ort
+<<<<<<< HEAD
 - Federico Chiesa, fedechiesa
+=======
+- Roberto Levy, levyroberto
+>>>>>>> e0d3826ce0a1be27cac5b022af921d4219d9b8de
