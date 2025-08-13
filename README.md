@@ -25,3 +25,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
 - Mariel Garcik, MarielGarcik
+- Sebastian Gonzalez, sebastgonzalez
