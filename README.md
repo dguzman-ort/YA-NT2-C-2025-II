@@ -24,3 +24,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Roberto Levy, levyroberto
 - Martin Salvo, Tinoprograma
 - Mariel Garcik, MarielGarcik
+- Lucas Rodriguez Goñi, LucasGoni
