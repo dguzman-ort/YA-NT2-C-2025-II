@@ -23,3 +23,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Daniel Guzman, dguzman-ort
 - Roberto Levy, levyroberto
 - Martin Salvo, Tinoprograma
+- Mariel Garcik, MarielGarcik
