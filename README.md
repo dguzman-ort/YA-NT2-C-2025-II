@@ -25,8 +25,5 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
 - Mariel Garcik, MarielGarcik
-<<<<<<< HEAD
-- Jose Madrid, JD-Madrid
-=======
 - Sebastian Gonzalez, sebastgonzalez
->>>>>>> 47c51a0a58ebc245898c96ec616a121a7c770891
+- Jose Madrid, JD-Madrid
