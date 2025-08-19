@@ -27,3 +27,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Mariel Garcik, MarielGarcik
 - Sebastian Gonzalez, sebastgonzalez
 - Jose Madrid, JD-Madrid
+>>>>>>> 3716d8f494c92206c8614cce233dea972a04c444
