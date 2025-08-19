@@ -21,9 +21,10 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 # Listado de participantes:
 
 - Daniel Guzman, dguzman-ort
-- Federico Chiesa, fedechiesa
 - Roberto Levy, levyrobert
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
 - Mariel Garcik, MarielGarcik
-
+- Sebastian Gonzalez, sebastgonzalez
+- Jose Madrid, JD-Madrid
+- Federico Chiesa, fedechiesa
