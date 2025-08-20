@@ -22,6 +22,13 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 - Daniel Guzman, dguzman-ort
 - Roberto Levy, levyroberto
+- Geronimo Eguiguren, geroeguiguren
+- Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
-- Mariel Garcik, MarielGarcik
 - Lucas Rodriguez Goñi, LucasGoni
+- Maximo Maggiaiuolo, MaxiMaggia
+- Mariel Garcik, MarielGarcik
+- Maximiliano Alonso, Smaf96
+- Sebastian Gonzalez, sebastgonzalez
+- Jose Madrid, JD-Madrid
+- Federico Chiesa, fedechiesa
