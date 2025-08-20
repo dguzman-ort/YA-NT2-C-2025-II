@@ -21,7 +21,8 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 # Listado de participantes:
 
 - Daniel Guzman, dguzman-ort
-- Roberto Levy, levyrobert
+- Roberto Levy, levyroberto
+- Geronimo Eguiguren, geroeguiguren
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
 - Maximo Maggiaiuolo, MaxiMaggia
