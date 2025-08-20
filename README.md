@@ -26,6 +26,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Geronimo Eguiguren, geroeguiguren
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
+- Pablo Agustin Agis, agusagis
 - Lucas Rodriguez Goñi, LucasGoni
 - Maximo Maggiaiuolo, MaxiMaggia
 - Mariel Garcik, MarielGarcik
