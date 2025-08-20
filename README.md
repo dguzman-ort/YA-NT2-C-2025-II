@@ -26,5 +26,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Martin Salvo, Tinoprograma
 - Maximo Maggiaiuolo, MaxiMaggia
 - Mariel Garcik, MarielGarcik
+- Maximiliano Alonso, Smaf96
 - Sebastian Gonzalez, sebastgonzalez
 - Jose Madrid, JD-Madrid
+
