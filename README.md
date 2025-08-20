@@ -21,8 +21,16 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 # Listado de participantes:
 
 - Daniel Guzman, dguzman-ort
+- Facundo Gabriel Mendez Rosso, Facundo24149.
 - Roberto Levy, levyroberto
+- Geronimo Eguiguren, geroeguiguren
 - Loria Sofia, sloria9
 - Martin Salvo, Tinoprograma
 - Pablo Agustin Agis, agusagis
+- Lucas Rodriguez Goñi, LucasGoni
+- Maximo Maggiaiuolo, MaxiMaggia
 - Mariel Garcik, MarielGarcik
+- Maximiliano Alonso, Smaf96
+- Sebastian Gonzalez, sebastgonzalez
+- Jose Madrid, JD-Madrid
+- Federico Chiesa, fedechiesa
