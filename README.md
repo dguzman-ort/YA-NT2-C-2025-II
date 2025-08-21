@@ -33,8 +33,5 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Maximiliano Alonso, Smaf96
 - Sebastian Gonzalez, sebastgonzalez
 - Jose Madrid, JD-Madrid
-<<<<<<< HEAD
-- Adrian Vallejos, ademvall
-=======
 - Federico Chiesa, fedechiesa
->>>>>>> 658d6244287a78933d08727c7ea6730aed2b44bf
+- Adrian Vallejos, ademvall
