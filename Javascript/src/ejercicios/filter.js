@@ -1,3 +1,5 @@
+import {personas, EDAD_MINIMA} from './personas.js'
+
 //Referencia: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
 /**
@@ -14,3 +16,6 @@
  *  n
  * ]
  */
+
+const puedenIngresar = personas.filter(persona => persona.age >= EDAD_MINIMA)
+console.log(puedenIngresar)
