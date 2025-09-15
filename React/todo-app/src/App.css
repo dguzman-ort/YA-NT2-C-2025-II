@@ -128,3 +128,14 @@
     transform: translateY(-10px);
   }
 }
+
+
+/*----------------------------MI CSS-----------------------*/
+
+.todo-edit {
+  margin-left: 10px;
+  background-color:#667eea;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}

@@ -47,6 +47,13 @@ function App() {
     setTodos(newTodos)
   }
 
+
+  const editTodoTitle = (id) => {
+    const nuevoTitulo =prompt("Ingrese el nuevo nombre de la tarea")
+    const editTodosNames = todos.map(todo => todo.id === id ? {...todo,title:nuevoTitulo} : todo);
+    setTodos(editTodosNames)
+  };
+
   return (
     <>
       <div className="container center">
@@ -59,7 +66,7 @@ function App() {
             todos.length > 0 ?
             todos.map((todo) => {
               return (
-                <Todo key={todo.id} todo={todo} onclickRemove={deleteTodo} onToogle={updateTodo} />
+                <Todo key={todo.id} todo={todo} onclickRemove={deleteTodo} onToogle={updateTodo} onEditTitle={editTodoTitle}/>
               )
             }) :
             <li className="empty-state">
