@@ -34,3 +34,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Sebastian Gonzalez, sebastgonzalez
 - Jose Madrid, JD-Madrid
 - Federico Chiesa, fedechiesa
+- Adrian Vallejos, ademvall
