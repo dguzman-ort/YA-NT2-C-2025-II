@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hola grupo NT2</Text>
+      <Text>Vamos a aprender desarrollo mobile con expo.</Text>
       <Button title='Presiona aqui!' onPress={() => alert('Hola grupo NT2')} />
       <StatusBar style="auto" />
     </View>
@@ -14,7 +15,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
