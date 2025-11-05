@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { View, Text, Image, StyleSheet, Button } from 'react-native'
 import { Card, Icon } from '@rneui/themed'
+import { TouchableOpacity } from 'react-native'
 
 const IMAGE_URL = 'https://img.freepik.com/vector-gratis/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg'
 
@@ -15,33 +16,40 @@ const Vehiculo = ({ vehiculo }) => {
   // }, [vehiculo])
   return (
     <View>
-      <Card containerStyle={{ borderRadius: 10 }}>
-        <View style={styles.header}>
-          <Image 
-            source={{ uri: IMAGE_URL}} 
-            style={{ width: 100, height: 100 }}
-            resizeMode="contain"
-          />
-          <View style={styles.carInfoContainer}>
-            <Text style={styles.carInfo}>{vehiculo.marca} {vehiculo.modelo}</Text>
-            <Text style={styles.carYear}>{vehiculo.year}</Text>
-            <Text style={styles.carPrice}>{vehiculo.precio},00 ARS/Dia</Text>
+      <TouchableOpacity 
+      onPress={() => console.log('hello')}
+      onLongPress={() => console.log('long press')}
+      activeOpacity={0.8}
+      >
+        <Card containerStyle={{ borderRadius: 10 }}>
+          <View style={styles.header}>
+            <Image
+              source={{ uri: IMAGE_URL }}
+              style={{ width: 100, height: 100 }}
+              resizeMode="contain"
+            />
+            <View style={styles.carInfoContainer}>
+              <Text style={styles.carInfo}>{vehiculo.marca} {vehiculo.modelo}</Text>
+              <Text style={styles.carYear}>{vehiculo.year}</Text>
+              <Text style={styles.carPrice}>{vehiculo.precio},00 ARS/Dia</Text>
+            </View>
+
           </View>
-          
-        </View>
-        <Card.Divider />
-        <View style={styles.buttonContainer}>
-          {/* Validar Icon vector */}
+          <Card.Divider />
+          <View style={styles.buttonContainer}>
+            {/* Validar Icon vector */}
             {/* <Icon
               name='favorite'
               type='font-awesome'
               color='#f50'
               onPress={() => console.log('hello')} /> */}
-          
-          <Button title="Editar" />
-          <Button title="Eliminar" />
-        </View>
-      </Card>
+            
+            <Button title="Editar" onPress={() => console.log('editar')} />
+            <Button title="Eliminar" onPress={() => console.log('eliminar')} />
+          </View>
+        </Card>
+      </TouchableOpacity>
+
     </View>
   )
 }
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-  }  
+  }
 })
 
 export default Vehiculo

@@ -1,6 +1,6 @@
 import { random } from '../utils/lib'
 
-const MAX_VEHICULOS = 50
+const MAX_VEHICULOS = 10
 
 const vehiculoModel = {
   marca: 'Toyota',
@@ -78,5 +78,15 @@ const getVehiculos = () => {
   })
 }
 
+const agregarVehiculo = (vehiculo) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const newVehiculo = { ...vehiculo, id: vehiculos.length + 1 }
+      vehiculos.push(newVehiculo)
+      resolve(newVehiculo)
+    }, 1000)
+  })
+}
 
-export { getVehiculos }
+
+export { getVehiculos, agregarVehiculo }

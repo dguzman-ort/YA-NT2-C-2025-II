@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
 import { agregarVehiculo } from '../../services/vehiculos'
 import { Input } from '@rneui/themed';
+import { useNavigation } from '@react-navigation/native'
 
 export default function VehiculoForm() {
 
+  const navigation = useNavigation()
   const [vehiculo, setVehiculo] = useState({
     marca: '',
     modelo: '',
@@ -39,6 +41,7 @@ export default function VehiculoForm() {
     console.log('Guardando vehiculo...')
     agregarVehiculo(vehiculo).then((data) => {
       console.log('Vehiculo guardado', data)
+      navigation.goBack()
       setGeneralMessage({
         message: 'Vehiculo guardado correctamente',
         type: 'success',
@@ -94,7 +97,7 @@ export default function VehiculoForm() {
         />
         <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10 }}>
           <Button title="Guardar" onPress={handleSubmit} />
-          <Button title="Cancelar" onPress={() => console.log('Cancelar')} />
+          <Button title="Cancelar" onPress={() => navigation.goBack()} />
         </View>
 
         {/* Alerta general */}
