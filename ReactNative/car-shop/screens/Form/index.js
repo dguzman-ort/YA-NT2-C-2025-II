@@ -1,18 +1,20 @@
 import { useState } from 'react'
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
-import { agregarVehiculo } from '../../services/vehiculos'
+import { agregarVehiculo, actualizarVehiculo } from '../../services/vehiculos'
 import { Input } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export default function VehiculoForm() {
 
+  const { vehiculoData } = useRoute().params || {}
+  
   const navigation = useNavigation()
   const [vehiculo, setVehiculo] = useState({
-    marca: '',
-    modelo: '',
-    year: '',
-    color: '',
-    precio: '',
+    marca: vehiculoData?.marca || '',
+    modelo: vehiculoData?.modelo || '',
+    year: vehiculoData?.year || '',
+    color: vehiculoData?.color || '',
+    precio: vehiculoData?.precio || '',
   })
 
   const [generalMessage, setGeneralMessage] = useState(null)
@@ -38,15 +40,35 @@ export default function VehiculoForm() {
       })
       return
     }
-    console.log('Guardando vehiculo...')
-    agregarVehiculo(vehiculo).then((data) => {
-      console.log('Vehiculo guardado', data)
-      navigation.goBack()
-      setGeneralMessage({
-        message: 'Vehiculo guardado correctamente',
-        type: 'success',
+    
+
+    const shouldUpdate = vehiculoData?.id ? true : false
+
+    if (shouldUpdate){
+      /* Actualizar vehiculo */
+      console.log('Actualizando vehiculo...', vehiculoData.id, vehiculo)
+      actualizarVehiculo(vehiculoData.id, vehiculo).then((data) => {
+        console.log('Vehiculo actualizado', data)
+        navigation.goBack()
+        setGeneralMessage({
+          message: 'Vehiculo actualizado correctamente',
+          type: 'success',
+        })
       })
-    })
+    }else{
+      /* Agregar vehiculo */
+      console.log('Agregando vehiculo...', vehiculo)
+      agregarVehiculo(vehiculo).then((data) => {
+        console.log('Vehiculo guardado', data)
+        navigation.goBack()
+        setGeneralMessage({
+          message: 'Vehiculo guardado correctamente',
+          type: 'success',
+        })
+      })
+    }
+
+    
   }
   
   return (
@@ -74,7 +96,7 @@ export default function VehiculoForm() {
         <Input 
           name="year" 
           placeholder="Año" 
-          value={vehiculo.year} 
+          value={vehiculo.year.toString()} 
           onChangeText={(text) => handleChange('year', text)} 
           keyboardType='numeric'
           errorMessage={errors?.year ? 'El año es requerido' : ''}
@@ -90,7 +112,7 @@ export default function VehiculoForm() {
         <Input 
           name="precio" 
           placeholder="Precio" 
-          value={vehiculo.precio} 
+          value={vehiculo.precio.toString()} 
           onChangeText={(text) => handleChange('precio', text)} 
           keyboardType='numeric'
           errorMessage={errors?.precio ? 'El precio es requerido' : ''}

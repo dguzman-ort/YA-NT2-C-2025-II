@@ -2,10 +2,12 @@ import { useEffect } from 'react'
 import { View, Text, Image, StyleSheet, Button } from 'react-native'
 import { Card, Icon } from '@rneui/themed'
 import { TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
-const IMAGE_URL = 'https://img.freepik.com/vector-gratis/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg'
+// const IMAGE_URL = 'https://img.freepik.com/vector-gratis/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg'
 
 const Vehiculo = ({ vehiculo }) => {
+  const navigation = useNavigation()
 
 
   // useEffect(() => {
@@ -17,14 +19,14 @@ const Vehiculo = ({ vehiculo }) => {
   return (
     <View>
       <TouchableOpacity 
-      onPress={() => console.log('hello')}
+      onPress={() => navigation.navigate('Details', { id: vehiculo.id })}
       onLongPress={() => console.log('long press')}
-      activeOpacity={0.8}
+      // activeOpacity={0.8}
       >
         <Card containerStyle={{ borderRadius: 10 }}>
           <View style={styles.header}>
             <Image
-              source={{ uri: IMAGE_URL }}
+              source={{ uri: vehiculo.imagen }}
               style={{ width: 100, height: 100 }}
               resizeMode="contain"
             />

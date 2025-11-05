@@ -2,6 +2,8 @@ import { random } from '../utils/lib'
 
 const MAX_VEHICULOS = 10
 
+const IMAGE_URL = 'https://img.freepik.com/vector-gratis/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg'
+
 const vehiculoModel = {
   marca: 'Toyota',
   modelo: 'Corolla',
@@ -46,17 +48,19 @@ const generarVehiculo = () => {
   const year = getRandomYear()
   const color = getRandomColor()
   const precio = getRandomPrecio()
+  const imagen = IMAGE_URL
   return {
     marca,
     modelo,
     year,
     color,
-    precio
-  }
+    precio,
+    imagen
+  } 
 }
 
 
-const vehiculos = Array.from(
+let vehiculos = Array.from(
   {length: MAX_VEHICULOS}, 
   generarVehiculo
 ).map((vehiculo, index) => {
@@ -88,5 +92,38 @@ const agregarVehiculo = (vehiculo) => {
   })
 }
 
+const getVehiculoById = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(vehiculos.find((vehiculo) => vehiculo.id === id))
+    }, 1000)
+  })
+}
 
-export { getVehiculos, agregarVehiculo }
+const eliminarVehiculo = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      vehiculos = vehiculos.filter((vehiculo) => vehiculo.id !== id)
+      resolve(true)
+    }, 1000)
+  })
+}
+
+const actualizarVehiculo = (id, vehiculo) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const vehiculoActualizado = { ...vehiculo, id: id }
+      vehiculos = vehiculos.map((v) => v.id === id ? { ...v, ...vehiculoActualizado } : v)
+      resolve(true)
+    }, 1000)
+  })
+}
+
+
+export { 
+  getVehiculos, 
+  getVehiculoById, 
+  agregarVehiculo, 
+  actualizarVehiculo,
+  eliminarVehiculo
+}
