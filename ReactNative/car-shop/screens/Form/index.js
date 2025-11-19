@@ -3,16 +3,17 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
 import { agregarVehiculo, actualizarVehiculo } from '../../services/vehiculos'
 import { Input } from '@rneui/themed';
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useAuth } from '../../hooks/useAuth'
 
 export default function VehiculoForm() {
 
   const { vehiculoData } = useRoute().params || {}
-  
+  const { auth } = useAuth()
   const navigation = useNavigation()
   const [vehiculo, setVehiculo] = useState({
     marca: vehiculoData?.marca || '',
     modelo: vehiculoData?.modelo || '',
-    year: vehiculoData?.year || '',
+    anio: vehiculoData?.anio || '',
     color: vehiculoData?.color || '',
     precio: vehiculoData?.precio || '',
   })
@@ -29,12 +30,12 @@ export default function VehiculoForm() {
   const handleSubmit = () => {
     console.log(vehiculo)
     /* Validaciones */
-    if (vehiculo.marca === '' || vehiculo.modelo === '' || vehiculo.year === '' || vehiculo.color === '' || vehiculo.precio === '') {
+    if (vehiculo.marca === '' || vehiculo.modelo === '' || vehiculo.anio === '' || vehiculo.color === '' || vehiculo.precio === '') {
       setErrors({ 
         ...errors, 
         marca: vehiculo.marca === '',
         modelo: vehiculo.modelo === '',
-        year: vehiculo.year === '',
+        anio: vehiculo.anio === '',
         color: vehiculo.color === '',
         precio: vehiculo.precio === ''
       })
@@ -47,7 +48,7 @@ export default function VehiculoForm() {
     if (shouldUpdate){
       /* Actualizar vehiculo */
       console.log('Actualizando vehiculo...', vehiculoData.id, vehiculo)
-      actualizarVehiculo(vehiculoData.id, vehiculo).then((data) => {
+      actualizarVehiculo(vehiculoData.id, vehiculo, auth.access_token).then((data) => {
         console.log('Vehiculo actualizado', data)
         navigation.goBack()
         setGeneralMessage({
@@ -58,7 +59,7 @@ export default function VehiculoForm() {
     }else{
       /* Agregar vehiculo */
       console.log('Agregando vehiculo...', vehiculo)
-      agregarVehiculo(vehiculo).then((data) => {
+      agregarVehiculo(vehiculo, auth.access_token).then((data) => {
         console.log('Vehiculo guardado', data)
         navigation.goBack()
         setGeneralMessage({
@@ -94,12 +95,12 @@ export default function VehiculoForm() {
           errorMessage={errors?.modelo ? 'El modelo es requerido' : ''}
         />
         <Input 
-          name="year" 
+          name="anio" 
           placeholder="Año" 
-          value={vehiculo.year.toString()} 
-          onChangeText={(text) => handleChange('year', text)} 
+          value={vehiculo.anio.toString()} 
+          onChangeText={(text) => handleChange('anio', text)} 
           keyboardType='numeric'
-          errorMessage={errors?.year ? 'El año es requerido' : ''}
+          errorMessage={errors?.anio ? 'El año es requerido' : ''}
         />
         <Input 
           name="color" 

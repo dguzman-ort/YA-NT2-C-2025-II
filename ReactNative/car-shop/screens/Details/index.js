@@ -4,16 +4,18 @@ import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/nativ
 import { getVehiculoById } from '../../services/vehiculos'
 import { Divider } from '@rneui/themed'
 import { eliminarVehiculo } from '../../services/vehiculos'
+import { useAuth } from '../../hooks/useAuth'
 
 export default function Details() {
   const { id } = useRoute().params
+  const { auth } = useAuth()
   const [vehiculo, setVehiculo] = useState(null)
   const navigation = useNavigation()
 
   
   useFocusEffect(useCallback(() => {
     if (id) {
-      getVehiculoById(id).then((vehiculo) => {
+      getVehiculoById(id, auth.access_token).then((vehiculo) => {
         console.log('Vehiculo obtenido', vehiculo)
         setVehiculo(vehiculo)
       }).catch((error) => {
@@ -23,7 +25,7 @@ export default function Details() {
   }, [id]))
 
   const handleEliminar = () => {
-    eliminarVehiculo(id).then((data) => {
+    eliminarVehiculo(id, auth.access_token).then((data) => {
       console.log('Vehiculo eliminado', data)
       navigation.goBack()
     }).catch((error) => {
@@ -39,14 +41,14 @@ export default function Details() {
         <ScrollView>
           <View style={styles.imageContainer}>
             <Image
-              source={{ uri: vehiculo.imagen }}
+              source={{ uri: vehiculo.urlImagen }}
               style={{ width: 260, height: 320 }}
               resizeMode="contain"
             />
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.title}>{vehiculo.marca} {vehiculo.modelo}</Text>
-            <Text style={styles.carYear}>{vehiculo.year}</Text>
+            <Text style={styles.carYear}>{vehiculo.anio}</Text>
             <Text style={styles.carPrice}>{vehiculo.precio},00 ARS/Dia</Text>
           </View>
           <View style={styles.descriptionContainer}>
