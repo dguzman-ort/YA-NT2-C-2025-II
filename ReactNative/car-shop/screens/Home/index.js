@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { Icon } from '@rneui/themed'
 import { Divider } from '@rneui/themed'
 import VehiculoFlatList from '../../components/VehiculoFlatList'
@@ -8,8 +8,10 @@ import { getVehiculos } from '../../services/vehiculos'
 import { useState, useEffect, useCallback } from 'react'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons'
+import { useAuth } from '../../hooks/useAuth'
 
 export default function Home() {
+  const { auth, logout } = useAuth()
 
   const [vehiculos, setVehiculos] = useState([])
   const [showForm, setShowForm] = useState(false)
@@ -18,8 +20,8 @@ export default function Home() {
 
 
   useFocusEffect(useCallback(() => {
-    getVehiculos().then((vehiculos) => {
-      console.log(vehiculos)
+    getVehiculos(auth.access_token).then((vehiculos) => {
+      // console.log('Vehiculos obtenidos', vehiculos)
       setVehiculos(vehiculos)
     })
   }, []))
@@ -36,10 +38,14 @@ export default function Home() {
     <>
       <View style={styles.header}>
         {/* <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Listado de vehiculos</Text> */}
-        <View style={styles.iconContainer}>
-          <FontAwesome name="search" size={20} color="black" />
-          <FontAwesome name="filter" size={20} color="black" />
+        <View style={styles.userContainer}>
+          <Text style={styles.userText}>Hola, {auth.user.fullName}</Text>
         </View>
+        <TouchableOpacity onPress={logout}>
+          <View style={styles.iconContainer}>
+            <FontAwesome name="sign-out" size={20} color="black" />
+          </View>
+        </TouchableOpacity>
 
       </View>
       <Divider />
@@ -70,7 +76,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     gap: 10,
     padding: 10,
   },
@@ -78,5 +84,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-  }
+  },
+  userContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  userText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });

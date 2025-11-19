@@ -26,13 +26,13 @@ const Vehiculo = ({ vehiculo }) => {
         <Card containerStyle={{ borderRadius: 10 }}>
           <View style={styles.header}>
             <Image
-              source={{ uri: vehiculo.imagen }}
+              source={{ uri: vehiculo.urlImagen }}
               style={{ width: 100, height: 100 }}
               resizeMode="contain"
             />
             <View style={styles.carInfoContainer}>
               <Text style={styles.carInfo}>{vehiculo.marca} {vehiculo.modelo}</Text>
-              <Text style={styles.carYear}>{vehiculo.year}</Text>
+              <Text style={styles.carYear}>{vehiculo.anio}</Text>
               <Text style={styles.carPrice}>{vehiculo.precio},00 ARS/Dia</Text>
             </View>
 

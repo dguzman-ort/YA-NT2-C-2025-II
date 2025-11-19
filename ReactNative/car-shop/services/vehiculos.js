@@ -4,6 +4,8 @@ const MAX_VEHICULOS = 10
 
 const IMAGE_URL = 'https://img.freepik.com/vector-gratis/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg'
 
+const URL_API = 'https://us-central1-api-nt2-ejemplo.cloudfunctions.net/app/api'
+
 const vehiculoModel = {
   marca: 'Toyota',
   modelo: 'Corolla',
@@ -26,7 +28,7 @@ const getRandomMarca = () => {
 }
 
 const getRandomModelo = (marca) => {
-  return modelos[marca][random(0,modelos[marca].length - 1)]
+  return modelos[marca][random(0, modelos[marca].length - 1)]
 }
 
 const getRandomYear = () => {
@@ -56,74 +58,153 @@ const generarVehiculo = () => {
     color,
     precio,
     imagen
-  } 
+  }
 }
 
 
 let vehiculos = Array.from(
-  {length: MAX_VEHICULOS}, 
+  { length: MAX_VEHICULOS },
   generarVehiculo
 ).map((vehiculo, index) => {
   return {
     ...vehiculo,
     id: index + 1,
   }
-} )
+})
 
 //console.log(vehiculos)
 
 
-const getVehiculos = () => {
+const getVehiculos = (token) => {
   return new Promise((resolve, reject) => {
-    // Simulando una llamada a una API de vehiculos
-    setTimeout(() => {
-      resolve(vehiculos)
-    }, 1000)
+    console.log('Llamada a la API de vehiculos')
+    fetch(`${URL_API}/read`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        // console.log('Response', response)
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Error al obtener los vehiculos')
+        }
+      })
+      .then(data => {
+        // console.log('Data', typeof data)
+        resolve(data)
+      })
+      .catch(error => {
+        console.error('Error', error)
+        reject(error)
+      })
   })
 }
 
-const agregarVehiculo = (vehiculo) => {
+const agregarVehiculo = (vehiculo, token) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const newVehiculo = { ...vehiculo, id: vehiculos.length + 1 }
-      vehiculos.push(newVehiculo)
-      resolve(newVehiculo)
-    }, 1000)
+    fetch(`${URL_API}/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ ...vehiculo, urlImagen: IMAGE_URL }),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Error al agregar el vehiculo')
+        }
+      })
+      .then(data => {
+        resolve(data)
+      })
+      .catch(error => {
+        console.error('Error', error)
+        reject(error)
+      })
   })
 }
 
-const getVehiculoById = (id) => {
+const getVehiculoById = (id, token) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(vehiculos.find((vehiculo) => vehiculo.id === id))
-    }, 1000)
+    fetch(`${URL_API}/read/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Error al obtener el vehiculo')
+        }
+      })
+      .then(data => {
+        resolve(data)
+      })
+      .catch(error => {
+        console.error('Error', error)
+        reject(error)
+      })
   })
 }
 
-const eliminarVehiculo = (id) => {
+const eliminarVehiculo = (id, token) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      vehiculos = vehiculos.filter((vehiculo) => vehiculo.id !== id)
-      resolve(true)
-    }, 1000)
+    fetch(`${URL_API}/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          resolve(true)
+        } else {
+          throw new Error('Error al eliminar el vehiculo')
+        }
+      })
+      .catch(error => {
+        console.error('Error', error)
+        reject(error)
+      })
   })
 }
 
-const actualizarVehiculo = (id, vehiculo) => {
+const actualizarVehiculo = (id, vehiculo, token) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const vehiculoActualizado = { ...vehiculo, id: id }
-      vehiculos = vehiculos.map((v) => v.id === id ? { ...v, ...vehiculoActualizado } : v)
-      resolve(true)
-    }, 1000)
+    fetch(`${URL_API}/update/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ ...vehiculo, urlImagen: IMAGE_URL }),
+    })
+      .then(response => {
+        if (response.ok) {
+          return resolve(true)
+        } else {
+          throw new Error('Error al actualizar el vehiculo')
+        }
+      })
+      .catch(error => {
+        console.error('Error', error)
+        reject(error)
+      })
+
   })
 }
 
 
-export { 
-  getVehiculos, 
-  getVehiculoById, 
-  agregarVehiculo, 
+export {
+  getVehiculos,
+  getVehiculoById,
+  agregarVehiculo,
   actualizarVehiculo,
   eliminarVehiculo
 }
