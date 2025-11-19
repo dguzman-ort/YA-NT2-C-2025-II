@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 import authService from '../../services/authService'
 import { useAuth } from '../../hooks/useAuth'
+import { storeData } from '../../services/AsyncStorage'
 
 
 export default function Login() {
@@ -21,7 +22,6 @@ export default function Login() {
     authService.login(formData.email, formData.password).then((data) => {
       console.log('Usuario autenticado', data)
       setAuth(data)
-      
 
     }).catch((error) => {
       console.log('error', error)

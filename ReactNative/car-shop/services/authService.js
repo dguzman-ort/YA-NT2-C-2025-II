@@ -1,3 +1,5 @@
+const AUTH_KEY = '@auth'
+
 const login = (email, password) => {
   return new Promise((resolve, reject) => {
     // Llamada a la API de autenticación
@@ -57,4 +59,4 @@ const login = (email, password) => {
 //   })
 // }
 
-export default { login }
+export default { login, AUTH_KEY }
